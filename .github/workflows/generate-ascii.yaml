@@ -1,7 +1,9 @@
 name: Generate ASCII Artwork
 
 on: 
-    workflow_dispatch:
+    push:
+        branches:
+            - main
 
 concurrency:
     group: "generate-ascii-artwork"
@@ -49,6 +51,7 @@ jobs:
     deploy_job_3:
         needs: test_job_2
         runs-on: ubuntu-latest
+        timeout-minutes: 1
         steps:
          
         - name: Download dragon file
