@@ -49,6 +49,7 @@ jobs:
            echo ${{ env.USERNAME}}
 
     deploy_job_3:
+        if: github.ref == 'refs/heads/main'
         needs: test_job_2
         runs-on: ubuntu-latest
         timeout-minutes: 1
