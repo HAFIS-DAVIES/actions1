@@ -1,16 +1,18 @@
 name: Generate ASCII Artwork
 
 on: push
-
+env:
+    USERNAME: hafis
 jobs:
     build_job_1:
         runs-on: ubuntu-latest
+
         steps:
         - name: Install Cowsay
           run: |
              sudo apt-get install cowsay -y 
              cowsay -f dragon "Run for cover, I am a Dragon ........ RAWR" >> dragon.txt
-        
+             echo $USERNAME
         - name: Upload Dragon file
           uses: actions/upload-artifact@v4
           with:
@@ -34,13 +36,15 @@ jobs:
           run: grep -i "dragon" dragon.txt
 
         - name: vunerability scan
-          run: echo " testing completed"
+          run: |
+           echo " testing completed"
+           echo ${{ env.USERNAME}}
 
     deploy_job_3:
         needs: test_job_2
         runs-on: ubuntu-latest
         steps:
-
+         
         - name: Download dragon file
           uses: actions/download-artifact@v5
           with:
