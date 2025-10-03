@@ -5,6 +5,10 @@ on:
       branches:
         - main
 
+concurrency:
+    group: "generate-ascii-artwork"
+    cancel-in-progress: true
+
 env:
     USERNAME: hafis
 jobs:
@@ -46,9 +50,6 @@ jobs:
 
     deploy_job_3:
         needs: test_job_2
-        concurrency:
-          group: production-deployment
-          cancel-in-progress: true
         runs-on: ubuntu-latest
         steps:
          
