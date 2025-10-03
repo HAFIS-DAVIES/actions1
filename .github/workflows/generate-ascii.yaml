@@ -5,7 +5,7 @@ on:
 
 concurrency:
     group: "generate-ascii-artwork"
-    cancel-in-progress: true
+    cancel-in-progress: false
 
 env:
     USERNAME: hafis
