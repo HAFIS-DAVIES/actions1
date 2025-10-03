@@ -54,4 +54,6 @@ jobs:
           run: cat dragon.txt
 
         - name: deploy stage
-          run: echo " deployment completed"
+          run: |
+             echo " deployment completed"
+             sleep 600s
